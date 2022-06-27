@@ -29,6 +29,14 @@ class ForestFireClassification():
                 
                 layers.Dropout(0.2),
                 
+                layers.Conv2D(64, 3, padding='same', activation='relu'),
+                layers.MaxPooling2D(pool_size=2, strides=2),
+                
+                layers.Conv2D(32, 3, padding='same', activation='relu'),
+                layers.MaxPooling2D(pool_size=2, strides=2),
+                
+                layers.Dropout(0.2),
+                
                 layers.Flatten(),
                 
                 layers.Dense(256, activation='relu'),
@@ -75,7 +83,7 @@ class ForestFireClassification():
             img_path, target_size=(self.forest_fire_dataloader.dataset.img_height, self.forest_fire_dataloader.dataset.img_width)
         )
 
-        img_array = tf.utils.img_to_array(img)
+        img_array = tf.keras.utils.img_to_array(img)
         img_array = tf.expand_dims(img_array, 0)
 
         predictions = self.model.predict(img_array)
