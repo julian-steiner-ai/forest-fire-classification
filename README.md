@@ -1,2 +1,3 @@
-# forest-fire-classification
+# Forest Fire Classification
+
 Image classification of forest fires.
